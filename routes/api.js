@@ -15,7 +15,7 @@ router.get("/send-email", AuthController.sendTestEmail);
 router.get("/profile", authMiddleware, ProfileController.index); //Private route
 router.put("/profile/:id", authMiddleware, ProfileController.update); //Private route
 
-// * News routes
+// * News routes with cache
 router.get("/news", redisCache.route(), NewsController.index);
 router.post("/news", authMiddleware, NewsController.store);
 router.get("/news/:id", NewsController.show);
